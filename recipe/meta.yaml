@@ -18,10 +18,8 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}    # [unix or (win and py==27)]
-    - {{ compiler('cxx') }}  # [unix or (win and py==27)]
-    - vs2017_win-64          # [win64 and py>27]
-    - vs2017_win-32          # [win32 and py>27]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     # The DLL build uses cmake on Windows
     - cmake                  # [win]
     - make                   # [unix]
@@ -32,9 +30,11 @@ requirements:
     - enum34          # [py27]
     # llvmdev is built with libz compression support
     - zlib            # [unix]
+    - vs2015_runtime  # [win and py==27]
   run:
     - python
     - enum34          # [py27]
+    - vs2015_runtime  # [win and py==27]
 
 test:
   imports:
