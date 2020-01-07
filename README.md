@@ -85,31 +85,31 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_python2.7target_platformwin-64</td>
+              <td>win_c_compilervs2008cxx_compilervs2008python2.7</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=594&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/llvmlite-feedstock?branchName=master&jobName=win&configuration=win_python2.7target_platformwin-64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/llvmlite-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2008cxx_compilervs2008python2.7" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_python3.6target_platformwin-64</td>
+              <td>win_c_compilervs2017cxx_compilervs2017python3.6</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=594&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/llvmlite-feedstock?branchName=master&jobName=win&configuration=win_python3.6target_platformwin-64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/llvmlite-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2017cxx_compilervs2017python3.6" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_python3.7target_platformwin-64</td>
+              <td>win_c_compilervs2017cxx_compilervs2017python3.7</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=594&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/llvmlite-feedstock?branchName=master&jobName=win&configuration=win_python3.7target_platformwin-64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/llvmlite-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2017cxx_compilervs2017python3.7" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_python3.8target_platformwin-64</td>
+              <td>win_c_compilervs2017cxx_compilervs2017python3.8</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=594&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/llvmlite-feedstock?branchName=master&jobName=win&configuration=win_python3.8target_platformwin-64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/llvmlite-feedstock?branchName=master&jobName=win&configuration=win_c_compilervs2017cxx_compilervs2017python3.8" alt="variant">
                 </a>
               </td>
             </tr>
