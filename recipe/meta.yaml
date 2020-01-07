@@ -29,11 +29,11 @@ requirements:
     - enum34          # [py27]
     # llvmdev is built with libz compression support
     - zlib            # [unix]
-    - vs2015_runtime  # [win and py==27]
+    - vs2015_runtime >=14.1,<15.0a0  # [win and py==27]
   run:
     - python
     - enum34          # [py27]
-    - vs2015_runtime  # [win and py==27]
+    - vs2015_runtime >=14.1,<15.0a0  # [win and py==27]
 
 test:
   imports:
