@@ -17,9 +17,8 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}    # [unix or (win and py==27)]
-    - {{ compiler('cxx') }}  # [unix or (win and py==27)]
-    - vs2017_{{ target_platform }}  # [win and py>27]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     # The DLL build uses cmake on Windows
     - cmake                  # [win]
     - make                   # [unix]
