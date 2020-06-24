@@ -1,6 +1,9 @@
 @rem Let CMake know about the LLVM install path, for find_package()
 set CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%
 
+@rem set verbose mode for debugging
+set VERBOSE=1
+
 @rem Ensure there are no build leftovers (CMake can complain)
 if exist ffi\build rmdir /S /Q ffi\build
 
