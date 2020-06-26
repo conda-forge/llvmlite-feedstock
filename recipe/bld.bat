@@ -23,8 +23,7 @@ llvm-config.exe --libs
 @rem Trying to invoke cmake directly
 mkdir build
 cd build
-set VERBOSE=1
-cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ../ffi/ 
+cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ../ffi/
 cmake --build ../ffi/ --config Release --verbose
 if errorlevel 1 exit 1
 
