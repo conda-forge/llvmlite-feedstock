@@ -24,7 +24,7 @@ llvm-config.exe --libs
 mkdir build
 cd build
 cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ../ffi/
-cmake --DCMAKE_VERBOSE_MAKEFILE:BOOL=ON --build ../ffi/ --config Release
+cmake --DCMAKE_VERBOSE_MAKEFILE:BOOL=ON --build ../ffi/ 
 if errorlevel 1 exit 1
 
 %PYTHON% runtests.py
