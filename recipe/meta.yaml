@@ -32,7 +32,7 @@ requirements:
   run:
     - python
     - llvmdev 9.0.1
-    - zlib  # [py38 win]
+    - zlib  # [py38 and win]
 
 test:
   imports:
