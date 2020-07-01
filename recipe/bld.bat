@@ -20,17 +20,15 @@ if exist ffi\build rmdir /S /Q ffi\build
 
 llvm-config.exe --libs
 
-@rem %PYTHON% -S setup.py install
+%PYTHON% -S setup.py install
 @rem Trying to invoke cmake directly
-mkdir build
-cd build
-cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ../ffi/
-cmake --DCMAKE_VERBOSE_MAKEFILE:BOOL=ON --build ../ffi/ 
+@rem mkdir build
+@rem cd build
+@rem cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ../ffi/
+@rem cmake --DCMAKE_VERBOSE_MAKEFILE:BOOL=ON --build ../ffi/ 
 if errorlevel 1 exit 1
 
 %PYTHON% runtests.py
 if errorlevel 1 exit 1
 
-@rem Let CMake know about the LLVM install path, for find_package()
-set CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%
 
