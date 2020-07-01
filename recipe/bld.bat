@@ -18,14 +18,9 @@ set "LDFLAGS=%LDFLAGS% /LIBPATH:%LIBRARY_LIB%"
 @rem Ensure there are no build leftovers (CMake can complain)
 if exist ffi\build rmdir /S /Q ffi\build
 
-llvm-config.exe --libs
+@rem llvm-config.exe --libs
 
 %PYTHON% -S setup.py install
-@rem Trying to invoke cmake directly
-@rem mkdir build
-@rem cd build
-@rem cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ../ffi/
-@rem cmake --DCMAKE_VERBOSE_MAKEFILE:BOOL=ON --build ../ffi/ 
 if errorlevel 1 exit 1
 
 %PYTHON% runtests.py
