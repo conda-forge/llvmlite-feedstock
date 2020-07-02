@@ -28,9 +28,11 @@ requirements:
   host:
     - python
     - llvmdev 9.0.1
-    - zlib
+    - zlib  # [unix]
+    - vs2015_runtime  # [win]
   run:
     - python
+    - vs2015_runtime  # [win]
     - llvmdev 9.0.1
     - zlib  # [py38 and win]
 
