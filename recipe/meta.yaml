@@ -24,7 +24,6 @@ requirements:
     # The DLL build uses cmake on Windows
     - cmake                  # [win]
     - make                   # [unix]
-    - zlib  # [win]
   host:
     - python
     - llvmdev 9.0.1
@@ -34,7 +33,6 @@ requirements:
     - python
     - vs2015_runtime  # [win]
     - llvmdev 9.0.1
-    - zlib  # [py38 and win]
 
 test:
   imports:
