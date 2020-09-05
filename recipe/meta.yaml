@@ -10,11 +10,9 @@ source:
   # don't use github generated tar-ball as the sha256 value may not be stable
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - 0001-Add-a-debug-print-to-load_library_permanently.patch
 
 build:
-  number: 3
+  number: 4
   script_env:
     - PY_VCRUNTIME_REDIST
 
