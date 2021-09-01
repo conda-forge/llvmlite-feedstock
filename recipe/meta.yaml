@@ -27,8 +27,8 @@ requirements:
     - python
     - setuptools
     - pip
-    - llvmdev 10.0.*
-    - llvm 10.0.*
+    - llvmdev 11.1.*
+    - llvm 11.1.*
     - vs2015_runtime  # [win]
     - zlib  # [win]
   run:
