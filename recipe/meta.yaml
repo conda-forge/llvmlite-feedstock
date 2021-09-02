@@ -1,6 +1,6 @@
 {% set name = "llvmlite" %}
-{% set version = "0.36.0" %}
-{% set sha256 = "765128fdf5f149ed0b889ffbe2b05eb1717f8e20a5c87fa2b4018fbcce0fcfc9" %}
+{% set version = "0.37.0" %}
+{% set sha256 = "6392b870cd018ec0c645d6bbb918d6aa0eeca8c62674baaee30862d6b6865b15" %}
 
 package:
   name: {{ name|lower }}
@@ -10,9 +10,12 @@ source:
   # don't use github generated tar-ball as the sha256 value may not be stable
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - 0001-Add-add_dll_directory-for-LIBRARY_BIN-for-Py38-on-Windows.patch  # [win and py>=38]
 
 build:
-  number: 4
+  number: 0
+  skip: True  # [py<37]
   script_env:
     - PY_VCRUNTIME_REDIST
 
@@ -27,8 +30,8 @@ requirements:
     - python
     - setuptools
     - pip
-    - llvmdev 10.0.*
-    - llvm 10.0.*
+    - llvmdev 11.1.*
+    - llvm 11.1.*
     - vs2015_runtime  # [win]
     - zlib  # [win]
   run:
