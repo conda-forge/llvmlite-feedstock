@@ -26,7 +26,8 @@ requirements:
     # The DLL build uses cmake on Windows
     - cmake                  # [win]
     - make                   # [unix]
-  host:
+    - m2-patch    # [win]
+   host:
     - python
     - setuptools
     - pip
