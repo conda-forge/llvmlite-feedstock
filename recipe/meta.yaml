@@ -27,7 +27,7 @@ requirements:
     - cmake                  # [win]
     - make                   # [unix]
     - m2-patch    # [win]
-   host:
+  host:
     - python
     - setuptools
     - pip
