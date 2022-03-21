@@ -18,7 +18,8 @@ build:
   skip: true  # [py<37]
   script_env:
     - PY_VCRUNTIME_REDIST
-
+  ignore_run_exports:
+    - zlib
 requirements:
   build:
     - {{ compiler('c') }}
