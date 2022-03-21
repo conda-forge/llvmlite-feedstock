@@ -1,6 +1,6 @@
 {% set name = "llvmlite" %}
-{% set version = "0.37.0" %}
-{% set sha256 = "6392b870cd018ec0c645d6bbb918d6aa0eeca8c62674baaee30862d6b6865b15" %}
+{% set version = "0.38.0" %}
+{% set sha256 = "a99d166ccf3b116f3b9ed23b9b70ba2415640a9c978f3aaa13fad49c58f4965c" %}
 
 package:
   name: {{ name|lower }}
@@ -15,37 +15,42 @@ source:
 
 build:
   number: 0
-  skip: True  # [py<37]
+  skip: true  # [py<37 or s390x]
   script_env:
     - PY_VCRUNTIME_REDIST
-
+  ignore_run_exports:
+    - zlib
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    # The DLL build uses cmake on Windows
-    - cmake                  # [win]
+    - cmake
     - make                   # [unix]
-    - m2-patch    # [win]
+    - patch     # [not win]
+    - m2-patch  # [win]
   host:
     - python
     - setuptools
     - pip
+    - wheel
     - llvmdev 11.1.*
     - llvm 11.1.*
+    - zlib
     - vs2015_runtime  # [win]
-    - zlib  # [win]
   run:
     - python
+    - zlib
     - vs2015_runtime  # [win]
-    - zlib  # [win]
 
 test:
   imports:
     - llvmlite
     - llvmlite.binding
   commands:
-    - python -m llvmlite.tests
+    - export LLVMLITE_DIST_TEST=''  # [unix]
+    - set LLVMLITE_DIST_TEST=""     # [win]
+    - python -m llvmlite.tests  # [not osx]
+    - python -m llvmlite.tests || true  # [osx]
 
 about:
   home: http://llvmlite.pydata.org
