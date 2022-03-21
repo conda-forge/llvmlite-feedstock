@@ -47,8 +47,7 @@ test:
     - llvmlite
     - llvmlite.binding
   commands:
-    - python -m llvmlite.tests  # [not osx]
-    - python -m llvmlite.tests || true  # [osx]
+    - python -m llvmlite.tests
 
 about:
   home: http://llvmlite.pydata.org
