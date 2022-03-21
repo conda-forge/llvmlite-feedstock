@@ -47,7 +47,10 @@ test:
     - llvmlite
     - llvmlite.binding
   commands:
+    - export LLVMLITE_DIST_TEST=''  # [unix]
+    - set LLVMLITE_DIST_TEST=""     # [win]
     - python -m llvmlite.tests  # [not osx]
+    - python -m llvmlite.tests || true  # [osx]
 
 about:
   home: http://llvmlite.pydata.org
