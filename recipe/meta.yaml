@@ -15,7 +15,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<37]
+  skip: true  # [py<37 or s390x]
   script_env:
     - PY_VCRUNTIME_REDIST
   ignore_run_exports:
