@@ -52,6 +52,7 @@ about:
   home: https://llvmlite.pydata.org
   license: BSD-2-Clause
   license_file: LICENSE
+  license_family: BSD
   summary: A lightweight LLVM python binding for writing JIT compilers.
   doc_url: https://llvmlite.pydata.org/en/latest/
   dev_url: https://github.com/numba/llvmlite
