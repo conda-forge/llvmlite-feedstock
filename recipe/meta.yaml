@@ -1,6 +1,5 @@
 {% set name = "llvmlite" %}
-{% set version = "0.39.1" %}
-{% set sha256 = "b43abd7c82e805261c425d50335be9a6c4f84264e34d6d6e475207300005d572" %}
+{% set version = "0.40.0" %}
 
 package:
   name: {{ name|lower }}
@@ -9,7 +8,7 @@ package:
 source:
   # don't use github generated tar-ball as the sha256 value may not be stable
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: c910b8fbfd67b8e9d0b10ebc012b23cd67cbecef1b96f00d391ddd298d71671c
 
 build:
   number: 0
