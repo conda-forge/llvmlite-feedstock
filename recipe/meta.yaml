@@ -14,8 +14,6 @@ source:
 build:
   number: 0
   skip: true  # [py<37]
-  script_env:
-    - PY_VCRUNTIME_REDIST
 
 requirements:
   build:
