@@ -13,6 +13,7 @@ source:
 
 build:
   number: 0
+  skip: true  # [py<310]
   script_env:
     - PY_VCRUNTIME_REDIST
 
