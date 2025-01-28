@@ -1,6 +1,6 @@
 {% set name = "llvmlite" %}
-{% set version = "0.43.0" %}
-{% set sha256 = "ae2b5b5c3ef67354824fb75517c8db5fbe93bc02cd9671f3c62271626bc041d5" %}
+{% set version = "0.44.0" %}
+{% set sha256 = "07667d66a5d150abed9157ab6c0b9393c9356f229784a4385c02f99e94fc94d4" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +8,12 @@ package:
 
 source:
   # don't use github generated tar-ball as the sha256 value may not be stable
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 1
-  skip: true  # [py<39]
+  number: 0
+  skip: true  # [py<310]
   script_env:
     - PY_VCRUNTIME_REDIST
 
@@ -29,8 +29,8 @@ requirements:
   host:
     - python
     - setuptools
-    - llvmdev 14.0.*
-    - llvm 14.0.*
+    - llvmdev 15.0.*
+    - llvm 15.0.*
     - zlib
     - vs2015_runtime  # [win]
   run:
