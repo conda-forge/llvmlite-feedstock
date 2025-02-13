@@ -12,10 +12,12 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
   script_env:
     - PY_VCRUNTIME_REDIST
+  ignore_run_exports:
+    - libllvm15  # [unix and not ppc64le]
 
 requirements:
   build:
