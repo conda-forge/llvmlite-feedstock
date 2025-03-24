@@ -12,10 +12,8 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
-  script_env:
-    - PY_VCRUNTIME_REDIST
 
 requirements:
   build:
@@ -29,13 +27,11 @@ requirements:
   host:
     - python
     - setuptools
-    - llvmdev 15.0.*
-    - llvm 15.0.*
+    - llvmdev 15.0.*        # abstract pin for static lib
+    - llvmdev 15.0.7 *_5    # concrete pin for static lib - bot should update
     - zlib
-    - vs2015_runtime  # [win]
   run:
     - python
-    - vs2015_runtime  # [win]
 
 test:
   imports:
@@ -59,3 +55,4 @@ extra:
     - marcelotrevisani
     - xhochy
     - mbargull
+    - beckermr

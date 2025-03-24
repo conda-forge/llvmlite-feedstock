@@ -1,6 +1,7 @@
 bot:
+  update_static_libs: true
   abi_migration_branches:
-  - rc
+    - rc
 build_platform:
   linux_aarch64: linux_64
   linux_ppc64le: linux_64
