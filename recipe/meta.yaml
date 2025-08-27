@@ -12,8 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
-  skip: true  # [py<310]
+  number: 2
 
 requirements:
   build:
@@ -22,7 +21,7 @@ requirements:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake
+    - cmake <4
     - make                   # [unix]
   host:
     - python
