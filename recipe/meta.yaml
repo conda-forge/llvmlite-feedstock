@@ -1,20 +1,18 @@
 {% set name = "llvmlite" %}
-{% set version = "0.43.0rc1" %}
-{% set sha256 = "0218e490f3eb889fe7269d3fae36da4e37a98f4482690b6be77c577390839c7e" %}
+{% set version = "0.44.0" %}
+{% set sha256 = "07667d66a5d150abed9157ab6c0b9393c9356f229784a4385c02f99e94fc94d4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/numba/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  # don't use github generated tar-ball as the sha256 value may not be stable
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  skip: true  # [py<39]
-  script_env:
-    - PY_VCRUNTIME_REDIST
+  number: 2
 
 requirements:
   build:
@@ -23,18 +21,16 @@ requirements:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake
+    - cmake <4
     - make                   # [unix]
   host:
     - python
     - setuptools
-    - llvmdev 14.0.*
-    - llvm 14.0.*
+    - llvmdev 15.0.*        # abstract pin for static lib
+    - llvmdev 15.0.7 *_5    # concrete pin for static lib - bot should update
     - zlib
-    - vs2015_runtime  # [win]
   run:
     - python
-    - vs2015_runtime  # [win]
 
 test:
   imports:
@@ -58,3 +54,4 @@ extra:
     - marcelotrevisani
     - xhochy
     - mbargull
+    - beckermr
