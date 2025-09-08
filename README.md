@@ -370,6 +370,7 @@ Feedstock Maintainers
 =====================
 
 * [@beckermr](https://github.com/beckermr/)
+* [@esc](https://github.com/esc/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@marcelotrevisani](https://github.com/marcelotrevisani/)
 * [@mbargull](https://github.com/mbargull/)
