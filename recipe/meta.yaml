@@ -26,8 +26,7 @@ requirements:
   host:
     - python
     - setuptools
-    - llvmdev 15.0.*        # abstract pin for static lib
-    - llvmdev 15.0.7 *_5    # concrete pin for static lib - bot should update
+    - llvmdev 20.*        # abstract pin for static lib
     - zlib
   run:
     - python
