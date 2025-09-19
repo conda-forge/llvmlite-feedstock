@@ -1,6 +1,6 @@
 {% set name = "llvmlite" %}
-{% set version = "0.44.0" %}
-{% set sha256 = "07667d66a5d150abed9157ab6c0b9393c9356f229784a4385c02f99e94fc94d4" %}
+{% set version = "0.45.0" %}
+{% set sha256 = "ceb0bcd20da949178bd7ab78af8de73e9f3c483ac46b5bef39f06a4862aa8336" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 0
 
 requirements:
   build:
@@ -26,11 +26,12 @@ requirements:
   host:
     - python
     - setuptools
-    - llvmdev 15.0.*        # abstract pin for static lib
-    - llvmdev 15.0.7 *_5    # concrete pin for static lib - bot should update
+    - llvmdev 20.*        # abstract pin for static lib
+    - llvmdev 20.1.8 *_1  # concrete pin for static lib - bot should update
     - zlib
   run:
     - python
+    - zstd
 
 test:
   imports:
