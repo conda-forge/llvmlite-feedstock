@@ -27,6 +27,7 @@ requirements:
     - python
     - setuptools
     - llvmdev 20.*        # abstract pin for static lib
+    - llvmdev 20.1.8 *_1  # concrete pin for static lib - bot should update
     - zlib
   run:
     - python
