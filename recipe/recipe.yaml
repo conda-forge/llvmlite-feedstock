@@ -44,8 +44,8 @@ tests:
   - package_contents:
       strict: true
       files:
-        - lib/python*/site-packages/llvmlite-${{ version }}-*
-        - lib/python*/site-packages/llvmlite/*
+        - ${{ "lib/python*" if unix else "Lib" }}/site-packages/llvmlite-${{ version }}-*
+        - ${{ "lib/python*" if unix else "Lib" }}/site-packages/llvmlite/*
   - python:
       imports:
         - llvmlite
