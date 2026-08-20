@@ -4,18 +4,27 @@ context:
   build_number: 2
   name: "llvmlite"
   version: "0.49.0rc1"
+  llvm_version: "22.1.8 *_1"  # concrete pin for static lib - maintainer should update?
 
 package:
   name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  # don't use github generated tar-ball as the sha256 value may not be stable
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
   sha256: 73843b8a3189c9231eae9666b073fe545a0ff677b519ea902ea4e494950c34cc
 
 build:
   number: ${{ build_number }}
+  script:
+    content:
+      - ${{ 'export CFLAGS="${CFLAGS/-fno-plt/}" CXXFLAGS="${CXXFLAGS/-fno-plt/}"' if ppc64le else "" }}
+      - ${{ 'export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"' if "osx" in target_platform else "" }}
+      - ${{ PYTHON }} -m pip install -vv --no-deps --no-build-isolation .
+    env:
+      LLVMLITE_ENABLE_ZLIB: "ON"
+      LLVMLITE_SHARED: 0
+      LLVMLITE_USE_CMAKE: 1
 
 requirements:
   build:
@@ -31,10 +40,11 @@ requirements:
       then:
         - make
   host:
+    - pip
     - python
     - setuptools
-    - llvmdev 22.*          # abstract pin for static lib
-    - llvmdev ==22.1.8 *_1  # concrete pin for static lib - bot should update
+    - llvmdev ${{ llvm_version | split('.') | first }}.*
+    - llvmdev ==${{ llvm_version }}
     - zlib
     - zstd
   run:
@@ -44,7 +54,7 @@ tests:
   - package_contents:
       strict: true
       files:
-        - ${{ "lib/python*" if unix else "Lib" }}/site-packages/llvmlite-${{ version }}-*
+        - ${{ "lib/python*" if unix else "Lib" }}/site-packages/llvmlite-${{ version }}.dist-info/*
         - ${{ "lib/python*" if unix else "Lib" }}/site-packages/llvmlite/*
   - python:
       imports:
