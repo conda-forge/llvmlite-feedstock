@@ -43,8 +43,8 @@ requirements:
     - pip
     - python
     - setuptools
-    - llvmdev ${{ llvm_version | split('.') | first }}.*
-    - llvmdev ==${{ llvm_version }}
+    - llvmdev 22.*          # abstract pin for static lib
+    - llvmdev ==22.1.8 *_2  # concrete pin for static lib - bot should update
     - zlib
     - zstd
   run:
