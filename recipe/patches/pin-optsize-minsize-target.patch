@@ -1,0 +1,49 @@
+Pin TestNewModulePassManager.test_optsize_minsize to a fixed target triple
+(x86_64-unknown-linux-gnu) instead of the host's native target.
+
+The test relies on two target-dependent assumptions that do not hold on
+every CI/build host: (1) vectorisation of the loop requires a target ISA
+with vector registers, and (2) the `optsize`/`minsize` function attributes
+only suppress vectorisation on targets where doing so trades away a scalar
+epilogue. Building the pass builder from `self.pb()` (which defaults to the
+host's native target machine) makes the test's outcome depend on which
+machine/architecture CI happens to run on -- e.g. it fails outright on
+riscv64, which previously had to be special-cased with a skip.
+
+This is the candidate upstream fix for numba/llvmlite#1449: pin the test to
+a known-good x86_64 target machine (skipping only if that target was not
+compiled into the linked LLVM) rather than skipping whole architectures.
+This patch replaces recipe/patches/skip-optsize-minsize-riscv64.patch.
+
+--- a/llvmlite/tests/test_binding.py
++++ b/llvmlite/tests/test_binding.py
+@@ -2809,8 +2809,28 @@
+         self.assertIn("alloca", orig_asm_optnone)
+         self.assertIn("alloca", optimized_asm_optnone)
+ 
++    # Both halves of this test are target-dependent: vectorisation requires a
++    # target whose baseline ISA has vector registers, and `optsize` only
++    # suppresses it on targets where vectorising costs a scalar epilogue.
++    # Pin to a known target rather than the host.  See numba/llvmlite#1449.
++    vectorize_triple = "x86_64-unknown-linux-gnu"
++
++    def check_vectorize_target(self):
++        try:
++            llvm.Target.from_triple(self.vectorize_triple)
++        except RuntimeError as e:
++            if "No available targets are compatible with triple" in str(e):
++                self.skipTest("x86-64 target unsupported by linked LLVM.")
++            else:
++                raise e
++
+     def test_optsize_minsize(self):
+-        pb = self.pb(speed_level=3)
++        llvm.initialize_all_targets()
++        self.check_vectorize_target()
++        target = llvm.Target.from_triple(self.vectorize_triple)
++        tm = target.create_target_machine(jit=False)
++        pto = llvm.create_pipeline_tuning_options(3)
++        pb = llvm.create_pass_builder(tm, pto)
+ 
+         # Without optsize: O3 vectorises the loop
+         mod = self.module(asm_vectorize)
