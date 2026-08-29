@@ -12,6 +12,8 @@ package:
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
   sha256: 00f16db782f4a13c78c5804aedc434e46794a77e89999a168f9401106270e50a
+  patches:
+    - patches/skip-optsize-minsize-riscv64.patch
 
 build:
   number: ${{ build_number }}

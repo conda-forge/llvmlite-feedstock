@@ -1,0 +1,20 @@
+Skip test_optsize_minsize on riscv64.
+
+The test asserts the loop vectorizer fires, but on targets whose default
+CPU exposes no vector registers TargetTransformInfo reports zero vector
+registers and LoopVectorize returns before analysis. Affects riscv64,
+i686 and s390x; only riscv64 is in the conda-forge matrix.
+
+Upstream: https://github.com/numba/llvmlite/issues/1449
+
+--- a/llvmlite/tests/test_binding.py
++++ b/llvmlite/tests/test_binding.py
+@@ -2809,6 +2809,8 @@
+         self.assertIn("alloca", orig_asm_optnone)
+         self.assertIn("alloca", optimized_asm_optnone)
+ 
++    @unittest.skipIf(platform.machine().startswith("riscv"),
++                     "riscv64 default CPU exposes no vector registers")
+     def test_optsize_minsize(self):
+         pb = self.pb(speed_level=3)
+ 
