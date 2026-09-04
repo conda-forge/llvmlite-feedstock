@@ -55,8 +55,8 @@ tests:
       files:
         - if: match(python, ">=3.15") and win:
           then:
-            - Lib/python/site-packages/llvmlite-${{ version }}.dist-info/*
-            - Lib/python/site-packages/llvmlite/*
+            - lib/python/site-packages/llvmlite-${{ version }}.dist-info/*
+            - lib/python/site-packages/llvmlite/*
           else:
             - ${{ "lib/python*" if unix else "Lib" }}/site-packages/llvmlite-${{ version }}.dist-info/*
             - ${{ "lib/python*" if unix else "Lib" }}/site-packages/llvmlite/*
