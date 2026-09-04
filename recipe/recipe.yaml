@@ -53,7 +53,7 @@ tests:
   - package_contents:
       strict: true
       files:
-        - if: match(python, ">=3.15") and win:
+        - if: match(python, ">=3.15") and win
           then:
             - lib/python/site-packages/llvmlite-${{ version }}.dist-info/*
             - lib/python/site-packages/llvmlite/*
