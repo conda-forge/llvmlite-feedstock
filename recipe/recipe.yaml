@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  build_number: 1
+  build_number: 2
   name: "llvmlite"
   version: "0.50.0"
 
@@ -45,7 +45,7 @@ requirements:
     - python
     - setuptools
     - llvmdev 22.*          # abstract pin for static lib
-    - llvmdev ==22.1.8 *_3  # concrete pin for static lib - bot should update
+    - llvmdev ==22.1.8 *_4  # concrete pin for static lib - bot should update
     - zlib
     - zstd
   run:
