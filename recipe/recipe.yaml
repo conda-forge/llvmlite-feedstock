@@ -47,7 +47,7 @@ requirements:
     - llvmdev 22.*          # abstract pin for static lib
     - llvmdev ==22.1.8 *_4  # concrete pin for static lib - bot should update
     - zlib
-    - zstd
+    - zstd >=1.6.0
   run:
     - python
 
