@@ -9,7 +9,7 @@ c_stdlib:
 c_stdlib_version:
 - '2.39'
 channel_sources:
-- conda-forge
+- conda-forge/label/python_rc,conda-forge
 channel_targets:
 - conda-forge llvmlite_rc
 cxx_compiler:
@@ -32,4 +32,4 @@ zip_keys:
 zlib:
 - '1'
 zstd:
-- '1.5'
+- '1.6'
